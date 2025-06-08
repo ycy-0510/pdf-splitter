@@ -1,0 +1,48 @@
+{
+  "name": "pdf-splitter-pdfjs-v2",
+  "main": "main.js",
+  "version": "1.0.0",
+  "description": "A simple PDF splitter application",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.ycy.pdfsplitter",
+    "productName": "PDF Splitter",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "renderer/**"
+    ],
+    "mac": {
+      "identity": null,
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-reload": "^2.0.0-alpha.1",
+    "pdf-lib": "^1.17.1",
+    "electron-builder": "^26.0.12"
+  }
+}

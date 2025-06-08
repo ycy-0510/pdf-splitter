@@ -3,9 +3,9 @@ const path = require('path');
 const fs = require('fs');
 const { PDFDocument } = require('pdf-lib');
 
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
-});
+// require('electron-reload')(__dirname, {
+//   electron: path.join(__dirname, 'node_modules', '.bin', 'electron')
+// });
 
 
 function createWindow() {

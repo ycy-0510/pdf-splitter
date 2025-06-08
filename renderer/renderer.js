@@ -31,7 +31,7 @@ async function renderPage(pageNum) {
   //get the unscaled viewport to calculate the scale
   const unscaledViewport = page.getViewport({ scale: 1 });
 
-  const scaleX = containerWidth / unscaledViewport.width;
+  const scaleX = containerWidth / unscaledViewport.width ;
 
   const viewport = page.getViewport({ scale: scaleX * scale });
 
@@ -71,7 +71,7 @@ canvas.addEventListener('click', (e) => {
 });
 
 document.getElementById('scaleInput').addEventListener('change', (e) => {
-  scale = parseFloat(e.target.value) || 2;
+  scale = parseFloat(e.target.value) || 1;
   renderPage(currentPage);
 });
 
@@ -82,6 +82,10 @@ document.getElementById('pdfInput').addEventListener('change', async (e) => {
   pdfDoc = await pdfjsLib.getDocument({ data }).promise;
   currentPage = 1;
   renderPage(currentPage);
+  //reset lines and slices
+  // remove all keys from pageLines and pageSlices
+  Object.keys(pageLines).forEach(key => delete pageLines[key]);
+  Object.keys(pageSlices).forEach(key => delete pageSlices[key]);
 });
 
 document.getElementById('prevPage').addEventListener('click', () => {
@@ -104,7 +108,7 @@ document.getElementById('exportBtn').addEventListener('click', async () => {
 
   for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
     const page = await pdfDoc.getPage(pageNum);
-    const viewport = page.getViewport({ scale });
+    const viewport = page.getViewport({ scale: 3 });
     const tmpCanvas = document.createElement('canvas');
     tmpCanvas.width = viewport.width;
     tmpCanvas.height = viewport.height;

@@ -25,6 +25,8 @@ jobs:
 
       - name: Build app
         run: yarn build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifacts
         uses: softprops/action-gh-release@v2

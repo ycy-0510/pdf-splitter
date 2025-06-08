@@ -1,5 +1,5 @@
 {
-  "name": "pdf-splitter-pdfjs-v2",
+  "name": "pdf-splitter-pdfjs",
   "main": "main.js",
   "version": "1.0.0",
   "description": "A simple PDF splitter application",
@@ -7,6 +7,20 @@
     "start": "electron .",
     "build": "electron-builder"
   },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "ycy-0510",
+      "repo": "pdf-splitter",
+      "releaseType": "release",
+      "assets": [
+        "dist/*.dmg",
+        "dist/*.zip",
+        "dist/*.exe",
+        "dist/*.nsis"
+      ]
+    }
+  ],
   "build": {
     "appId": "com.ycy.pdfsplitter",
     "productName": "PDF Splitter",
@@ -29,8 +43,9 @@
     },
     "win": {
       "target": [
+        "zip",
         "nsis",
-        "zip"
+        "portable"
       ],
       "icon": "build/icon.ico"
     },
